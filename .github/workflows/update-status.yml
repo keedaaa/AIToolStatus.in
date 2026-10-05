@@ -1,0 +1,60 @@
+name: Check AI tools and publish website
+
+on:
+  schedule:
+    - cron: "7-59/10 * * * *"   # about every 10 minutes
+  workflow_dispatch:             # adds a "Run workflow" button in the Actions tab
+  push:
+    branches: [main]
+    paths-ignore:
+      - "data/**"
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: status-site
+  cancel-in-progress: false
+
+jobs:
+  check-and-publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - name: Get the files
+        uses: actions/checkout@v5
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Check every tool and build the website
+        run: python update.py
+
+      - name: Save the last 24 hours of results
+        run: |
+          git config user.name "status-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "Status update" --quiet
+          git pull --rebase --quiet || true
+          git push --quiet || echo "Could not save history this time; it will be saved next run."
+
+      - name: Prepare GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload the website
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: site
+
+      - name: Publish the website
+        id: deploy
+        uses: actions/deploy-pages@v4

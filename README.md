@@ -1,4 +1,4 @@
-# AI Status Now – live status of 200 AI tools
+# AI Tool Status – live status of 200 AI tools
 
 A one-page website that shows whether popular AI tools (ChatGPT, Claude, Gemini, Grok and ~200 more) are up or down. A robot on GitHub checks every tool about every 10 minutes and republishes the page automatically. Hosting is free (GitHub Pages).
 

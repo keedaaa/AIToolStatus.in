@@ -2,10 +2,10 @@
   "_read_me": "This is the only file you normally need to edit. Put your values between the quotes, then click 'Commit changes'. The website rebuilds itself within a few minutes.",
 
   "_help_site_name": "The name shown at the top of the website.",
-  "site_name": "AI Status Now",
+  "site_name": "AI Tool Status",
 
   "_help_site_url": "Your full web address once it is live, e.g. https://www.aistatusnow.com  (or https://yourname.github.io/ai-status before you buy a domain). Leave empty until you know it.",
-  "site_url": "",
+  "site_url": "https://keedaaa.github.io/AIToolStatus.in",
 
   "_help_contact_email": "Email shown in the footer and privacy page for people to contact you.",
   "contact_email": "",
