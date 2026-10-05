@@ -1,0 +1,30 @@
+{
+  "_read_me": "This is the only file you normally need to edit. Put your values between the quotes, then click 'Commit changes'. The website rebuilds itself within a few minutes.",
+
+  "_help_site_name": "The name shown at the top of the website.",
+  "site_name": "AI Status Now",
+
+  "_help_site_url": "Your full web address once it is live, e.g. https://www.aistatusnow.com  (or https://yourname.github.io/ai-status before you buy a domain). Leave empty until you know it.",
+  "site_url": "",
+
+  "_help_contact_email": "Email shown in the footer and privacy page for people to contact you.",
+  "contact_email": "",
+
+  "_help_request_form_url": "Link to your Google Form for 'Request a tool' (the link you get from the form's Send button).",
+  "request_form_url": "",
+
+  "_help_adsense_client": "Your AdSense publisher ID, looks like ca-pub-1234567890123456. Leave empty until you apply for AdSense.",
+  "adsense_client": "",
+
+  "_help_ad_slots": "After AdSense approves you, create 3 'Display ads' units and paste each unit's slot number here (numbers only).",
+  "ad_slot_top": "",
+  "ad_slot_middle": "",
+  "ad_slot_bottom": "",
+
+  "_help_verification": "From Google Search Console / Bing Webmaster Tools: copy only the long code inside content=\"...\" of their HTML tag.",
+  "google_site_verification": "",
+  "bing_site_verification": "",
+
+  "_help_google_analytics_id": "Optional. Google Analytics 4 measurement ID, looks like G-XXXXXXXXXX.",
+  "google_analytics_id": ""
+}
