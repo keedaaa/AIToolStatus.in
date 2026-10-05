@@ -1,6 +1,6 @@
 # AI Tool Status – live status of 200 AI tools
 
-A one-page website that shows whether popular AI tools (ChatGPT, Claude, Gemini, Grok and ~200 more) are up or down. A robot on GitHub checks every tool about every 10 minutes and republishes the page automatically. Hosting is free (GitHub Pages).
+A one-page website that shows whether popular AI tools (ChatGPT, Claude, Gemini, Grok and ~200 more) are up or down. A robot on GitHub checks every tool about every 5 minutes and republishes the page automatically. Hosting is free (GitHub Pages).
 
 ## The only two files you normally edit
 
@@ -27,7 +27,7 @@ Optional extras on a line:
 - `templates/` – the page design.
 - `static/` – icon and social-share image.
 - `data/state.json` – the last 24 hours of results (written by the robot).
-- `.github/workflows/update-status.yml` – tells GitHub to run the robot every 10 minutes.
+- `.github/workflows/update-status.yml` – tells GitHub to run the robot every 5 minutes.
 - `site/` – the finished website (built automatically, not stored in the repository).
 
 ## If something looks wrong

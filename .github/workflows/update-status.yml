@@ -2,7 +2,7 @@ name: Check AI tools and publish website
 
 on:
   schedule:
-    - cron: "7-59/10 * * * *"   # about every 10 minutes
+    - cron: "2-59/5 * * * *"    # about every 5 minutes (GitHub's shortest allowed)
   workflow_dispatch:             # adds a "Run workflow" button in the Actions tab
   push:
     branches: [main]

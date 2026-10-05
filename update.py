@@ -2,7 +2,7 @@
 """
 AI tool status robot.
 
-GitHub runs this file automatically about every 10 minutes. Each run it:
+GitHub runs this file automatically about every 5 minutes. Each run it:
   1. checks every tool listed in tools.json (its website + its official status page, if any)
   2. remembers the last 24 hours of results in data/state.json
   3. rebuilds the whole website into the  site/  folder
@@ -386,7 +386,7 @@ def faq_items(status, checked_text, n, tools_by_id):
         ("Is Gemini down right now?",
          line("google-gemini", "Google Gemini") + "Gemini's row shows whether gemini.google.com is answering right now."),
         ("How do you check whether an AI tool is down?",
-         f"About every 10 minutes our checker visits all {n} tools from the cloud, measures how fast each one answers, "
+         f"About every 5 minutes our checker visits all {n} tools from the cloud, measures how fast each one answers, "
          "and reads the official status page where a tool publishes one. A tool is marked Down only after it fails "
          "two checks in a row, to avoid false alarms."),
         ("What do Up, Issues and Down mean?",
@@ -480,7 +480,7 @@ def build_site(tools, cfg, state, out=SITE, demo=False):
     st_tools = status["tools"]
     checked_dt = parse_iso(status["checked_at"]) if status["checked_at"] else None
     checked_text = checked_dt.strftime("%d %b %Y, %H:%M UTC") if checked_dt else \
-        "not yet (the first check runs within 10 minutes of going live)"
+        "not yet (the first check runs within 5 minutes of going live)"
     checked_iso = status["checked_at"] or ""
     n = len(tools)
     name = cfg["site_name"]
@@ -542,7 +542,7 @@ def build_site(tools, cfg, state, out=SITE, demo=False):
     faq_html = "\n".join(f"  <h3>{esc(q)}</h3>\n  <p>{esc(a)}</p>" for q, a in faqs)
     title = f"Is ChatGPT Down? Live Status of {n} AI Tools – {name}"
     desc = (f"Is ChatGPT, Claude, Gemini or Grok down? See the live status of {n} AI tools, "
-            "checked every 10 minutes. Search, filter and keep a free watchlist.")
+            "checked every 5 minutes. Search, filter and keep a free watchlist.")
     home = (url + "/") if url else ""
     graph = [
         {"@type": "WebSite", "@id": home + "#website", "name": name, "description": desc,
@@ -614,7 +614,7 @@ def build_site(tools, cfg, state, out=SITE, demo=False):
     link = (lambda p: f"{url}/{p}") if url else (lambda p: p)
     llms = [f"# {name}", "",
             f"> Live up/down status of {n} popular AI tools (ChatGPT, Claude, Gemini, Grok, Copilot and more), "
-            "checked about every 10 minutes from the cloud and combined with official status pages.", "",
+            "checked about every 5 minutes from the cloud and combined with official status pages.", "",
             f"Last checked: {checked_text}", "",
             "## Data", f"- [Live status board]({link('')}): the human-readable page",
             f"- [Live status JSON]({link('status.json')}): machine-readable status for every tool "
