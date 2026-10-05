@@ -247,11 +247,18 @@ def official_for(tool, page):
         if not states:
             return None
         worst = min(states, key=lambda s: ORDER[s])
+        affected = [str(c.get("name", "")).strip() for c in comps
+                    if COMPONENT_STATE.get(c.get("status")) not in (None, "up")]
     else:
         worst = INDICATOR_STATE.get(page.get("status", {}).get("indicator"))
         if not worst:
             return None
-    note = "" if worst == "up" else f"Company reports {WORDS[worst]}"
+        affected = []
+    if worst == "up":
+        return worst, ""
+    note = f"Company reports {WORDS[worst]}"
+    if affected:
+        note += ": " + ", ".join(affected[:2]) + (f" and {len(affected) - 2} more" if len(affected) > 2 else "")
     return worst, note
 
 
